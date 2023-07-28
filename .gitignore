@@ -56,3 +56,6 @@ Thumbs.db
 *.pycproj
 *.db
 *.orig
+
+# Config
+config.json

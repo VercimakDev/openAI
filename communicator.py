@@ -3,13 +3,12 @@ import requests
 import json
 import logging
 
-openai_api_key = "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"
+# Load configuration from config.json
+with open("config.json", "r") as config_file:
+    config = json.load(config_file)
 
-url = "https://api.openai.com/v1/chat/completions"
-headers = {
-    "Content-Type": "application/json",
-    "Authorization": f"Bearer {openai_api_key}"
-}
+openai_api_key = config["openai_api_key"]
+url = config["url"]
 
 # Create 'logs' directory if it doesn't exist
 logs_directory = os.path.join(os.path.dirname(__file__), "logs")
@@ -31,7 +30,7 @@ data = {
     "temperature": 0.7
 }
 
-response = requests.post(url, headers=headers, data=json.dumps(data))
+response = requests.post(url, headers={"Content-Type": "application/json", "Authorization": f"Bearer {openai_api_key}"}, data=json.dumps(data))
 
 if response.status_code == 200:
     result = response.json()
