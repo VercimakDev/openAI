@@ -1,0 +1,58 @@
+# Python specific
+*.pyc
+*.pyo
+__pycache__/
+
+# Logs
+logs/
+
+# Virtual environment
+venv/
+env/
+*.env
+
+# Compiled files
+*.o
+*.lo
+*.slo
+*.la
+*.a
+*.lai
+*.so
+*.dll
+*.pyd
+*.pyc
+*.pyo
+*.exe
+*.msi
+*.egg-info/
+dist/
+build/
+*.egg
+*.egg-info
+
+# Editor-specific
+.vscode/
+*.code-workspace
+*.idea/
+*.iml
+*.ipynb_checkpoints/
+
+# System-specific
+.DS_Store
+Thumbs.db
+
+# Misc
+*.log
+*.tmp
+*.tmp.*
+*.swp
+*.~lock.*
+*~
+*.bak
+*.backup
+*.pydevproject
+*.project
+*.pycproj
+*.db
+*.orig
