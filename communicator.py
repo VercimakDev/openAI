@@ -21,22 +21,26 @@ logging.basicConfig(
     level=logging.INFO
 )
 
-# Get user input to fill the content
-user_input = input("Input for OpenAI: ")
+while True:
+    # Get user input to fill the content
+    user_input = input("Input for OpenAI (type ':q' to quit): ")
 
-data = {
-    "model": "gpt-3.5-turbo",
-    "messages": [{"role": "user", "content": user_input}],
-    "temperature": 0.7
-}
+    if user_input == ":q":
+        break
 
-response = requests.post(url, headers={"Content-Type": "application/json", "Authorization": f"Bearer {openai_api_key}"}, data=json.dumps(data))
+    data = {
+        "model": "gpt-3.5-turbo",
+        "messages": [{"role": "user", "content": user_input}],
+        "temperature": 0.7
+    }
 
-if response.status_code == 200:
-    result = response.json()
-    output = result['choices'][0]['message']['content']
-    print("OpenAI:", output)
-    logging.info(f"Input: {user_input}, Output: {output}")
-else:
-    print("Error:", response.status_code, response.text)
-    logging.error(f"Error: {response.status_code}, {response.text}")
+    response = requests.post(url, headers={"Content-Type": "application/json", "Authorization": f"Bearer {openai_api_key}"}, data=json.dumps(data))
+
+    if response.status_code == 200:
+        result = response.json()
+        output = result['choices'][0]['message']['content']
+        print("OpenAI:", output)
+        logging.info(f"Input: {user_input}, Output: {output}")
+    else:
+        print("Error:", response.status_code, response.text)
+        logging.error(f"Error: {response.status_code}, {response.text}")
